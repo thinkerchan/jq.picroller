@@ -1,13 +1,36 @@
 <!DOCTYPE html>
-<html lang="en">
+<html>
 <head>
 	<meta charset="UTF-8">
-	<title>图片轮播组件</title>
-	<style>
-	*{margin:0;padding:0;list-style:none;}
-	</style>
+	<meta author="chenxinkai_gz">
+	<title>3D图片轮播组件</title>
+	<link rel="stylesheet" href="index.css">
 </head>
 <body>
-	<p>图片轮播组件</p>
+	<h1 class="page-main-tit">3D图片轮播组件</h1>
+	<!-- 结构 -->
+	<div class="demo-wrap">
+		<!-- 图片展示 -->
+		<ul class="slide-wrap">
+			<li><a href="#"><img src="http://dummyimage.com/400x200" alt=""></a></li>
+			<li><a href="#"><img src="http://dummyimage.com/400x200" alt=""></a></li>
+			<li><a href="#"><img src="http://dummyimage.com/400x200" alt=""></a></li>
+			<li><a href="#"><img src="http://dummyimage.com/400x200" alt=""></a></li>
+			<li><a href="#"><img src="http://dummyimage.com/400x200" alt=""></a></li>
+		</ul>
+		<!-- 可以隐藏 -->
+		<ul class="ctrl-dot">
+			<li>●</li>
+			<li>●</li>
+			<li>●</li>
+			<li>●</li>
+			<li>●</li>
+		</ul>
+		<!-- 必须 -->
+		<p class="arrow prev">&lt;</p>
+		<p class="arrow next">&gt;</p>
+	</div>
+	<script src="http://theutopia.cn/libs/jq/jquery1.10.2.min.js"></script>
+	<script src="jq.3Drolling.js"></script>
 </body>
 </html>

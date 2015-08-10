@@ -177,40 +177,46 @@
 	// 	})
 	// })();
 
-	//test8 改良立即执行函数的参数传递
-	// ;(function($,window,document,undefined){
-	// 	//之所以把这些系统变量传递进来,是以防我们在编写代码时用到,虽然在内也能直接使用全局变量,但是预先传递进来,能提高访问速度,于是性能也相应提升
-	// 	//undefined, 这个东西非常妙,我们没有传递,但是却在接收端上写上了它. 我的理解类似前面, 变量在作用域链中如果没有找到本应该找到的值,就会一直向上查找,知道undefined, 此处缓存可以加快访问进度.
-	// 	var Beautifier = function(ele, opt) {
-	// 	    this.$element = ele,	//接受JQ元素,作为一个属性存起来.
-	// 	    this.defaults = {
-	// 	        'color': 'red',
-	// 	        'fontSize': '12px',
-	// 	        'textDecoration':'none'
-	// 	    },
-	// 	    this.options = $.extend({}, this.defaults, opt)
-	// 	    // console.log(this);	//this是构造函数实例
-	// 	}
-	// 	Beautifier.prototype = {
-	// 	    beautify: function() {
-	// 	        return this.$element.css({	//注意这里的return是用来返回JQ对象
-	// 	            'color': this.options.color,
-	// 	            'fontSize': this.options.fontSize,
-	// 	            'textDecoration': this.options.textDecoration
-	// 	        });
-	// 	    }
-	// 	}
-	// 	$.fn.myplugin = function(options) {
-	// 	    // console.log(this);	//JQ元素
-	// 	    var beautifier = new Beautifier(this, options);	//体会一下这里的this, 将JQ元素传递进去
-	// 	    return beautifier.beautify();
-	// 	}
-	// 	$('a').myplugin({
-	// 		'color':'blue',
-	// 		'fontSize': '22px',
-	// 	  'textDecoration':'none'
-	// 	})
-	// })($,window,document);
+	// test8 改良立即执行函数的参数传递
+	;(function($,window,document,undefined){
+		//之所以把这些系统变量传递进来,是以防我们在编写代码时用到,虽然在内也能直接使用全局变量,但是预先传递进来,能提高访问速度,于是性能也相应提升
+		//undefined, 这个东西非常妙,我们没有传递,但是却在接收端上写上了它. 我的理解类似前面, 变量在作用域链中如果没有找到本应该找到的值,就会一直向上查找,知道undefined, 此处缓存可以加快访问进度.
+
+		// 构造函数
+		var Beautifier = function(ele, opt) {
+		    this.$element = ele,	//接受JQ元素,作为一个属性存起来.
+		    this.defaults = {
+		        'color': 'red',
+		        'fontSize': '12px',
+		        'textDecoration':'none'
+		    },
+		    this.options = $.extend({}, this.defaults, opt)
+		    // console.log(this);	//this是构造函数实例
+		}
+		Beautifier.prototype = {
+		    beautify: function() {
+		        return this.$element.css({	//注意这里的return是用来返回JQ对象
+		            'color': this.options.color,
+		            'fontSize': this.options.fontSize,
+		            'textDecoration': this.options.textDecoration
+		        });
+		    }
+		}
+
+		// 插件接口
+		$.fn.myplugin = function(options) {
+		    // console.log(this);	//JQ元素
+		    var beautifier = new Beautifier(this, options);	//体会一下这里的this, 将JQ元素传递进去
+		    return beautifier.beautify();
+		}
+
+		// 插件调用
+		$('a').myplugin({
+			'color':'blue',
+			'fontSize': '22px',
+		  'textDecoration':'none'
+		})
+	})($,window,document);
 	</script>
 </body>
 </html>
