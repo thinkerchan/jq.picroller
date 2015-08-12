@@ -74,15 +74,17 @@
       var v = 0;
       var e = 0;
 
-      init();
+
       function init() {
+        slider();
         controller();
-        g();
-        n()
+        autoPlay()
       }
 
+      init();
+
       // 控制点相关函数
-      function controller() {
+      function slider() {
         $ctrlDot.html("");
         for (var i = 0; i < len; i++) {
           // var D = $showArea_li.eq(i);
@@ -108,15 +110,18 @@
       }
 
 
-      // 控制点相关函数
-      function g() {
+      // 控制器
+      function controller() {
+        // 鼠标进入和离开清除定时器
         $(this).bind("mouseenter",
           function() {
             clearInterval(f)
           }).bind("mouseleave",
           function() {
-            n()
+            autoPlay()
           });
+
+          // 圆点单击
           $ctrlDot_li.bind("click",
             function() {
               if (m && o != $(this).index()) {
@@ -137,11 +142,11 @@
                   }
                 }
                 e = 0;
-                q();
+              animation;
                 if (v > 1) {
                   C = setInterval(function() {
                     if (m) {
-                      q();
+                      animation();
                       m = 0;
                       if (e >= v) {
                         clearInterval(C)
@@ -152,6 +157,7 @@
                 }
               }
             });
+          // 右边箭头单击事件
           $next.bind("click",
             function() {
               if (m) {
@@ -162,9 +168,10 @@
                 } else {
                   t++
                 }
-                q()
+                animation()
               }
             });
+          // 左边箭头单击事件
           $prev.bind("click",
             function() {
               if (m) {
@@ -175,12 +182,12 @@
                 } else {
                   t--
                 }
-                q()
+                animation()
               }
             })
         }
         //
-        function q() {
+        function animation() {
           if (s == "next") {
             for (i = 0; i < column; i++) {
               var D = init_arr[i - 1];
@@ -250,7 +257,7 @@
           e++
         }
         //定时器函数
-        function n() {
+        function autoPlay() {
           f = setInterval(A, rolling.args.autoRollingTime)
         }
         // 模拟单击
