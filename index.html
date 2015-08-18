@@ -1,36 +1,47 @@
 <!DOCTYPE html>
 <html>
 <head>
-	<meta charset="UTF-8">
-	<meta author="chenxinkai_gz">
-	<title>3D图片轮播组件</title>
-	<link rel="stylesheet" href="index.css">
+<meta charset="utf-8" />
+<title>3D图片轮播</title>
+<link rel="stylesheet" href="main.css" type="text/css">
+
 </head>
 <body>
-	<h1 class="page-main-tit">3D图片轮播组件</h1>
-	<!-- 结构 -->
-	<div class="demo-wrap">
-		<!-- 图片展示 -->
-		<ul class="slide-wrap">
-			<li><a href="#"><img src="http://dummyimage.com/400x200" alt=""></a></li>
-			<li><a href="#"><img src="http://dummyimage.com/400x200" alt=""></a></li>
-			<li><a href="#"><img src="http://dummyimage.com/400x200" alt=""></a></li>
-			<li><a href="#"><img src="http://dummyimage.com/400x200" alt=""></a></li>
-			<li><a href="#"><img src="http://dummyimage.com/400x200" alt=""></a></li>
+<div class="kePublic">
+<div id="demo" class="demo">
+		<ul class="slide-wrap" id="JslideWrap">
+			<li class="pos1"><a href="#"><img src="http://dummyimage.com/400x200/123" alt=""/><span class="pic-tit">1</span></a></li>
+			<li class="pos2"><a href="#"><img src="http://dummyimage.com/400x200/234" alt=""/><span class="pic-tit">2</span></a></li>
+			<li class="pos3"><a href="#"><img src="http://dummyimage.com/400x200/345" alt=""/><span class="pic-tit">3</span></a></li>
+			<li class="pos4"><a href="#"><img src="http://dummyimage.com/400x200/456" alt=""/><span class="pic-tit">4</span></a></li>
+			<li class="pos5"><a href="#"><img src="http://dummyimage.com/400x200/567" alt=""/><span class="pic-tit">5</span></a></li>
+			<li><a href="#"><img src="http://dummyimage.com/400x200/678"><span class="pic-tit">pic-tit</span></a></li>
+			<li><a href="#"><img src="http://dummyimage.com/400x200/789"><span class="pic-tit">pic-tit</span></a></li>
+			<li><a href="#"><img src="http://dummyimage.com/400x200/890"><span class="pic-tit">pic-tit</span></a></li>
+			<li><a href="#"><img src="http://dummyimage.com/400x200/901"><span class="pic-tit">pic-tit</span></a></li>
+			<li><a href="#"><img src="http://dummyimage.com/400x200/012"><span class="pic-tit">pic-tit</span></a></li>
 		</ul>
-		<!-- 可以隐藏 -->
-		<ul class="ctrl-dot">
-			<li>●</li>
-			<li>●</li>
-			<li>●</li>
-			<li>●</li>
-			<li>●</li>
+		<ul class="ctrl-dot" id="JctrlDot">
 		</ul>
-		<!-- 必须 -->
-		<p class="arrow prev">&lt;</p>
-		<p class="arrow next">&gt;</p>
-	</div>
-	<script src="http://theutopia.cn/libs/jq/jquery1.10.2.min.js"></script>
-	<script src="jq.3Drolling.js"></script>
+		<p class="arrow prev" id="prev">&lt;</p>
+		<p class="arrow next" id="next">&gt;</p>
+</div>
+<script type="text/javascript" src="jquery1.10.2.min.js"></script>
+<!-- <script type="text/javascript" src="jquery.3drolling.js"></script> -->
+<script type="text/javascript" src="bk.js"></script>
+<script>
+	$('#demo').RollingSlider({
+		showArea:"#JslideWrap",
+		ctrlDot:"#JctrlDot",	//这个参数为空或者不存在就不显示控制点
+		prev:"#prev",
+		next:"#next",
+		moveSpeed:300,
+		autoPlay:true,
+		autoRollingTime:3000
+	})
+	// 需要补充的参数: 列数, 控制点,首页显示的样式
+	// http://photos.pcgames.com.cn/
+	// 兼容至IE6
+</script>
 </body>
 </html>
