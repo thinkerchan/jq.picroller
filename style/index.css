@@ -1,0 +1,135 @@
+* {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+body {
+  font-family: 'Microsoft Yahei';
+  background-color: #f1f1f1;
+}
+
+.demo-wrap {
+  margin-top: 100px;
+}
+.demo-wrap .demo {
+  width: 1000px;
+  height: 450px;
+  margin: 0 auto;
+  position: relative;
+  -webkit-user-select: none;
+}
+
+.slide-wrap {
+  width: 1000px;
+  height: 450px;
+  margin: 0 auto;
+  position: relative;
+  overflow: hidden;
+}
+.slide-wrap li {
+  display: none;
+  width: 300px;
+  position: absolute;
+  z-index: 0;
+  overflow: hidden;
+  box-shadow: 0px 10px 20px #888;
+}
+.slide-wrap .inner {
+  position: relative;
+  border: 3px solid #ecfdfd;
+  border-radius: 5px;
+}
+.slide-wrap .inner a {
+  text-decoration: none;
+  border: none;
+  outline: none;
+}
+.slide-wrap .pic-tit {
+  font-size: 14px;
+  width: 100%;
+  height: 65px;
+  line-height: 65px;
+  background: #1ca297;
+  position: absolute;
+  bottom: 2px;
+  left: 0;
+  z-index: 99999;
+  text-align: center;
+  color: #FFF;
+  overflow: hidden;
+}
+.slide-wrap img {
+  width: 100%;
+  border: none;
+  outline: none;
+}
+.slide-wrap .pos1 {
+  display: block;
+  width: 180px;
+  height: 236px;
+  top: 60px;
+  left: 6%;
+  z-index: 1;
+}
+.slide-wrap .pos2 {
+  display: block;
+  width: 220px;
+  height: 286px;
+  top: 35px;
+  left: 20%;
+  z-index: 2;
+}
+.slide-wrap .pos3 {
+  display: block;
+  width: 300px;
+  height: 390px;
+  top: 0;
+  left: 35%;
+  z-index: 3;
+}
+.slide-wrap .pos4 {
+  display: block;
+  width: 220px;
+  height: 286px;
+  top: 35px;
+  right: 20%;
+  z-index: 2;
+}
+.slide-wrap .pos5 {
+  display: block;
+  width: 180px;
+  height: 236px;
+  top: 60px;
+  right: 6%;
+  z-index: 1;
+}
+.slide-wrap .inner {
+  overflow: hidden;
+  position: relative;
+}
+
+.arrow {
+  width: 48px;
+  height: 48px;
+  border-radius: 50%;
+  background-color: #ddd;
+  position: absolute;
+  top: 140px;
+  z-index: 10;
+  cursor: pointer;
+  font-size: 30px;
+  line-height: 48px;
+  text-align: center;
+  font-style: normal;
+}
+
+.prev {
+  left: 330px;
+  background-position: 0px 0px;
+}
+
+.next {
+  right: 330px;
+  background-position: -52px 0px;
+}

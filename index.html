@@ -1,47 +1,96 @@
+
 <!DOCTYPE html>
 <html>
 <head>
-<meta charset="utf-8" />
-<title>3D图片轮播</title>
-<link rel="stylesheet" href="main.css" type="text/css">
-
-</head>
-<body>
-<div class="kePublic">
-<div id="demo" class="demo">
-		<ul class="slide-wrap" id="JslideWrap">
-			<li class="pos1"><a href="#"><img src="http://dummyimage.com/400x200/123" alt=""/><span class="pic-tit">1</span></a></li>
-			<li class="pos2"><a href="#"><img src="http://dummyimage.com/400x200/234" alt=""/><span class="pic-tit">2</span></a></li>
-			<li class="pos3"><a href="#"><img src="http://dummyimage.com/400x200/345" alt=""/><span class="pic-tit">3</span></a></li>
-			<li class="pos4"><a href="#"><img src="http://dummyimage.com/400x200/456" alt=""/><span class="pic-tit">4</span></a></li>
-			<li class="pos5"><a href="#"><img src="http://dummyimage.com/400x200/567" alt=""/><span class="pic-tit">5</span></a></li>
-			<li><a href="#"><img src="http://dummyimage.com/400x200/678"><span class="pic-tit">pic-tit</span></a></li>
-			<li><a href="#"><img src="http://dummyimage.com/400x200/789"><span class="pic-tit">pic-tit</span></a></li>
-			<li><a href="#"><img src="http://dummyimage.com/400x200/890"><span class="pic-tit">pic-tit</span></a></li>
-			<li><a href="#"><img src="http://dummyimage.com/400x200/901"><span class="pic-tit">pic-tit</span></a></li>
-			<li><a href="#"><img src="http://dummyimage.com/400x200/012"><span class="pic-tit">pic-tit</span></a></li>
-		</ul>
-		<ul class="ctrl-dot" id="JctrlDot">
-		</ul>
-		<p class="arrow prev" id="prev">&lt;</p>
-		<p class="arrow next" id="next">&gt;</p>
-</div>
-<script type="text/javascript" src="jquery1.10.2.min.js"></script>
-<!-- <script type="text/javascript" src="jquery.3drolling.js"></script> -->
-<script type="text/javascript" src="bk.js"></script>
-<script>
-	$('#demo').RollingSlider({
-		showArea:"#JslideWrap",
-		ctrlDot:"#JctrlDot",	//这个参数为空或者不存在就不显示控制点
-		prev:"#prev",
-		next:"#next",
-		moveSpeed:300,
-		autoPlay:true,
-		autoRollingTime:3000
-	})
-	// 需要补充的参数: 列数, 控制点,首页显示的样式
-	// http://photos.pcgames.com.cn/
-	// 兼容至IE6
-</script>
+	<meta charset="utf-8" />
+	<meta author="chenxinkai_gz" />
+	<title>jq3D图片轮播插件</title>
+	<link rel="stylesheet" href="style/index.css">
+	</head>
+	<body>
+		<div class="demo-wrap">
+			<div id="demo" class="demo">
+				<ul class="slide-wrap" id="JslideWrap">
+					<li class="pos1">
+						<div class="inner">
+							<a href="#">
+								<img src="http://temp.im/300x390/fff"/>
+								<span class="pic-tit">1</span>
+							</a>
+						</div>
+					</li>
+					<li class="pos2">
+						<div class="inner">
+							<a href="#">
+								<img src="http://temp.im/300x390/fff"/>
+								<span class="pic-tit">2</span>
+							</a>
+						</div>
+					</li>
+					<li class="pos3">
+						<div class="inner">
+							<a href="#">
+								<img src="http://temp.im/300x390/fff"/>
+								<span class="pic-tit">3</span>
+							</a>
+						</div>
+					</li>
+					<li class="pos4">
+						<div class="inner">
+							<a href="#">
+								<img src="http://temp.im/300x390/fff"/>
+								<span class="pic-tit">4</span>
+							</a>
+						</div>
+					</li>
+					<li class="pos5">
+						<div class="inner">
+							<a href="#">
+								<img src="http://temp.im/300x390/fff"/>
+								<span class="pic-tit">5</span>
+							</a>
+						</div>
+					</li>
+					<li>
+						<div class="inner">
+							<a href="#">
+								<img data-src="http://temp.im/300x390/666"/>
+								<span class="pic-tit">6</span>
+							</a>
+						</div>
+					</li>
+					<li>
+						<div class="inner">
+							<a href="#">
+								<img data-src="http://temp.im/300x390/777"/>
+								<span class="pic-tit">7</span>
+							</a>
+						</div>
+					</li>
+					<li>
+						<div class="inner">
+							<a href="#">
+								<img data-src="http://temp.im/300x390/888"/>
+								<span class="pic-tit">8</span>
+							</a>
+						</div>
+					</li>
+				</ul>
+				<i class="arrow prev" id="Jprev">&lt;</i>
+				<i class="arrow next" id="Jnext">&gt;</i>
+			</div>
+		</div>
+		<script type="text/javascript" src="http://theutopia.cn/libs/jq/jquery1.10.2.min.js"></script>
+		<script type="text/javascript" src="script/jquery.rollingslider.js"></script>
+		<script>
+			$('#demo').RollingSlider({
+				showArea:"#JslideWrap",
+				prev:"#Jprev",
+				next:"#Jnext",
+				moveSpeed:300,
+				autoPlay:false
+				// stay:3000		// autoPlay:true时 stay才有效
+			});
+		</script>
 </body>
 </html>
