@@ -1,10 +1,9 @@
-
 <!DOCTYPE html>
 <html>
 <head>
 	<meta charset="utf-8" />
-	<meta author="chenxinkai_gz" />
-	<title>jq3D图片轮播插件</title>
+	<meta name="author" content="chenxinkai_gz">
+	<title>3D图片轮播</title>
 	<link rel="stylesheet" href="style/index.css">
 	</head>
 	<body>
@@ -14,7 +13,7 @@
 					<li class="pos1">
 						<div class="inner">
 							<a href="#">
-								<img src="http://temp.im/300x390/fff"/>
+								<img src="http://temp.im/300x390/fff" data-src="http://temp.im/300x390/111"/>
 								<span class="pic-tit">1</span>
 							</a>
 						</div>
@@ -22,7 +21,7 @@
 					<li class="pos2">
 						<div class="inner">
 							<a href="#">
-								<img src="http://temp.im/300x390/fff"/>
+								<img src="http://temp.im/300x390/fff" data-src="http://temp.im/300x390/222"/>
 								<span class="pic-tit">2</span>
 							</a>
 						</div>
@@ -30,7 +29,7 @@
 					<li class="pos3">
 						<div class="inner">
 							<a href="#">
-								<img src="http://temp.im/300x390/fff"/>
+								<img src="http://temp.im/300x390/fff" data-src="http://temp.im/300x390/333"/>
 								<span class="pic-tit">3</span>
 							</a>
 						</div>
@@ -38,7 +37,7 @@
 					<li class="pos4">
 						<div class="inner">
 							<a href="#">
-								<img src="http://temp.im/300x390/fff"/>
+								<img src="http://temp.im/300x390/fff" data-src="http://temp.im/300x390/444"/>
 								<span class="pic-tit">4</span>
 							</a>
 						</div>
@@ -46,51 +45,45 @@
 					<li class="pos5">
 						<div class="inner">
 							<a href="#">
-								<img src="http://temp.im/300x390/fff"/>
+								<img src="http://temp.im/300x390/fff" data-src="http://temp.im/300x390/555"/>
 								<span class="pic-tit">5</span>
 							</a>
 						</div>
 					</li>
-					<li>
+					<li class="pos6">
 						<div class="inner">
 							<a href="#">
-								<img data-src="http://temp.im/300x390/666"/>
+								<img src="http://temp.im/300x390/fff" data-src="http://temp.im/300x390/555"/>
 								<span class="pic-tit">6</span>
 							</a>
 						</div>
 					</li>
-					<li>
+					<li class="pos7">
 						<div class="inner">
 							<a href="#">
-								<img data-src="http://temp.im/300x390/777"/>
+								<img src="http://temp.im/300x390/fff" data-src="http://temp.im/300x390/555"/>
 								<span class="pic-tit">7</span>
 							</a>
 						</div>
 					</li>
-					<li>
-						<div class="inner">
-							<a href="#">
-								<img data-src="http://temp.im/300x390/888"/>
-								<span class="pic-tit">8</span>
-							</a>
-						</div>
-					</li>
 				</ul>
-				<i class="arrow prev" id="Jprev">&lt;</i>
-				<i class="arrow next" id="Jnext">&gt;</i>
+				<i class="arrow prev" id="Jprev"></i>
+				<i class="arrow next" id="Jnext"></i>
 			</div>
 		</div>
 		<script type="text/javascript" src="http://theutopia.cn/libs/jq/jquery1.10.2.min.js"></script>
-		<script type="text/javascript" src="script/jquery.rollingslider.js"></script>
+		<script type="text/javascript" src="script/v1.js"></script>
 		<script>
-			$('#demo').RollingSlider({
-				showArea:"#JslideWrap",
-				prev:"#Jprev",
-				next:"#Jnext",
-				moveSpeed:300,
-				autoPlay:false
-				// stay:3000		// autoPlay:true时 stay才有效
+			var demo = new PicRoller({
+				showArea:"#JslideWrap",	//必须参数
+				prev:"#Jprev",	//必须参数
+				next:"#Jnext",	//必须参数
+				column:5,	//展示列数
+				midClass:"active",	//中间li的样式名
+				moveSpeed:300,	//动画时间
+				autoPlay:false,	//自动播放
+				stay:3000	//autoPlay为true时使用才有效果
 			});
 		</script>
-</body>
+	</body>
 </html>
