@@ -12,26 +12,25 @@
     stay:5e3,
     column:5
   };
-  // 区域全局变量
-  var $showArea, $showArea_li, $prev, $next, _this, show_len, column, flag, midClass, moveSpeed, timer, styleArr = [], itemArr = [];
   // 构造函数
   function PicRoller(options) {
     $.extend(this, defaults, options);
-    _this = this;
     this.init();
   }
   PicRoller.prototype = {
     init:function() {
-      $showArea = $(this.showArea);
-      $showArea_li = $(this.showArea + ">li");
-      $prev = $(this.prev);
-      $next = $(this.next);
-      show_len = $showArea_li.length;
-      column = this.column;
-      midClass = this.midClass;
-      flag = 1;
-      moveSpeed = this.moveSpeed;
-      if (show_len < column) {
+      var $showArea = $(this.showArea);
+      this.$showArea = $showArea;
+      var $showArea_li = $(this.showArea + ">li");
+      this.$showArea_li = $showArea_li;
+      this.$prev = $(this.prev);
+      this.$next = $(this.next);
+      this.show_len = $showArea_li.length;
+      this.styleArr = [];
+      this.itemArr = [];
+      this.timer = null;
+      this.flag = 1;
+      if (this.show_len < this.column) {
         alert("数量设置错误!");
         return false;
       }
@@ -41,8 +40,9 @@
     },
     // 存储所有的show-item 但只存储 column个 样式
     saveStyle:function() {
+      var show_len = this.show_len, column = this.column, styleArr = this.styleArr;
       for (var i = 0; i < show_len; i++) {
-        var $cur_li = $showArea_li.eq(i);
+        var $cur_li = this.$showArea_li.eq(i);
         if (i < column) {
           // 存储用户设置的样式
           styleArr[i] = {
@@ -58,7 +58,7 @@
           $cur_li.css("left", styleArr[column - 1].left);
         }
         // 存储所有的show-item;
-        itemArr.push($cur_li);
+        this.itemArr.push($cur_li);
       }
     },
     arrows:function() {
@@ -66,23 +66,19 @@
       this._next();
     },
     _prev:function() {
-      this.bindClick($prev, "prev");
+      this.bindClick(this.$prev, "prev");
     },
     _next:function() {
-      this.bindClick($next, "next");
+      this.bindClick(this.$next, "next");
     },
     bindClick:function(prevOrNext, direction) {
+      var _this = this;
       prevOrNext.bind("click", function() {
-        if (flag) {
-          flag = 0;
-          _this.animation(direction);
-        }
+        _this.flag && (_this.flag = 0, _this.animation(direction))
       });
     },
     animation:function(direction) {
-      var updateFlag = function(){
-        flag = 1;
-      };
+      var _this = this, column = this.column, styleArr = this.styleArr, itemArr = this.itemArr, moveSpeed = this.moveSpeed, center  =  parseInt((column-1)/2);
       if (direction == "next") {
         for (i = 0; i < column; i++) {
           var prevStyleObj = styleArr[i - 1]; // 获取前一个li的样式
@@ -95,9 +91,13 @@
         }
         var lastStyleObj = styleArr[column - 1]; // 最右边的li样式
         if (itemArr.length != column) {
-          itemArr[column].css(lastStyleObj).fadeIn(moveSpeed,updateFlag);
+          itemArr[column].css(lastStyleObj).fadeIn(moveSpeed,function(){
+            _this.flag = 1;
+          });
         } else {
-          itemArr[0].stop().css(lastStyleObj).fadeIn(moveSpeed,updateFlag);
+          itemArr[0].stop().css(lastStyleObj).fadeIn(moveSpeed,function(){
+            _this.flag = 1;
+          });
         }
         itemArr.push(itemArr.shift());
         this.lazyLoad(column - 1);
@@ -112,32 +112,34 @@
           }
         }
         var firstStyleObj = styleArr[0];
-        itemArr[itemArr.length - 1].stop().css(firstStyleObj).fadeIn(moveSpeed,updateFlag);
+        itemArr[itemArr.length - 1].stop().css(firstStyleObj).fadeIn(moveSpeed,function(){
+            _this.flag = 1;
+          });
         itemArr.unshift(itemArr.pop());
         this.lazyLoad(0);
       }
-      var center  =  parseInt((column-1)/2);
-      itemArr[center].addClass(midClass).siblings().removeClass(midClass);
+      itemArr[center].addClass(this.midClass).siblings().removeClass(this.midClass);
     },
     lazyLoad:function(index) {
-      var $nextOne = itemArr[index].find("img"),
+      var itemArr = this.itemArr,
+          $nextOne = itemArr[index].find("img"),
           $realSrc = $nextOne.data("src"),
           hasSrc = itemArr[index].find("img").attr("src");
       !hasSrc && $nextOne.attr("src", $realSrc);
     },
-    simulate:function() {
-      $next.click();
-    },
     _autoPlay:function(){
-      timer = setInterval(_this.simulate, _this.stay);
+      var _this = this;
+      this.timer = setInterval(function(){
+        _this.$next.click();
+      }, _this.stay);
       this.clearTimer();
     },
     clearTimer:function() {
-      $showArea.one("mouseenter", function() {
+      var _this = this, timer = this.timer;
+      this.$showArea.one("mouseenter", function() {
         clearInterval(timer);
         timer = null;
-      })
-      $showArea.one("mouseleave", function() {
+      }).one("mouseleave", function() {
         _this.autoPlay && _this._autoPlay();
       });
     }
