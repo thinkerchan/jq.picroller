@@ -24,5 +24,3 @@
 				autoPlay:false,	//自动播放
 				stay:3000	//autoPlay为true时使用才有效果
 			});
-## demo地址
-[http://theutopia.cn/demo/jquery.rollingslider.js/](http://theutopia.cn/demo/jquery.rollingslider.js/)
