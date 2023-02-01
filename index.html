@@ -14,7 +14,7 @@
 						<div class="inner">
 							<a href="#">
 								<img src="http://temp.im/300x390/fff" data-src="http://temp.im/300x390/111"/>
-								<span class="pic-tit">1</span>
+								<span class="pic-tit">0</span>
 							</a>
 						</div>
 					</li>
@@ -22,7 +22,7 @@
 						<div class="inner">
 							<a href="#">
 								<img src="http://temp.im/300x390/fff" data-src="http://temp.im/300x390/222"/>
-								<span class="pic-tit">2</span>
+								<span class="pic-tit">1</span>
 							</a>
 						</div>
 					</li>
@@ -30,7 +30,7 @@
 						<div class="inner">
 							<a href="#">
 								<img src="http://temp.im/300x390/fff" data-src="http://temp.im/300x390/333"/>
-								<span class="pic-tit">3</span>
+								<span class="pic-tit">2</span>
 							</a>
 						</div>
 					</li>
@@ -38,7 +38,7 @@
 						<div class="inner">
 							<a href="#">
 								<img src="http://temp.im/300x390/fff" data-src="http://temp.im/300x390/444"/>
-								<span class="pic-tit">4</span>
+								<span class="pic-tit">3</span>
 							</a>
 						</div>
 					</li>
@@ -46,7 +46,7 @@
 						<div class="inner">
 							<a href="#">
 								<img src="http://temp.im/300x390/fff" data-src="http://temp.im/300x390/555"/>
-								<span class="pic-tit">5</span>
+								<span class="pic-tit">4</span>
 							</a>
 						</div>
 					</li>
@@ -54,7 +54,7 @@
 						<div class="inner">
 							<a href="#">
 								<img src="http://temp.im/300x390/fff" data-src="http://temp.im/300x390/555"/>
-								<span class="pic-tit">6</span>
+								<span class="pic-tit">5</span>
 							</a>
 						</div>
 					</li>
@@ -62,7 +62,7 @@
 						<div class="inner">
 							<a href="#">
 								<img src="http://temp.im/300x390/fff" data-src="http://temp.im/300x390/555"/>
-								<span class="pic-tit">7</span>
+								<span class="pic-tit">6</span>
 							</a>
 						</div>
 					</li>
@@ -71,14 +71,15 @@
 				<i class="arrow next" id="Jnext"></i>
 			</div>
 		</div>
-		<div class="demo-wrap">
+
+		<!-- <div class="demo-wrap">
 			<div id="demo" class="demo">
 				<ul class="slide-wrap" id="JslideWrap2">
 					<li class="pos1">
 						<div class="inner">
 							<a href="#">
 								<img src="http://temp.im/300x390/fff" data-src="http://temp.im/300x390/111"/>
-								<span class="pic-tit">1</span>
+								<span class="pic-tit">0</span>
 							</a>
 						</div>
 					</li>
@@ -86,7 +87,7 @@
 						<div class="inner">
 							<a href="#">
 								<img src="http://temp.im/300x390/fff" data-src="http://temp.im/300x390/222"/>
-								<span class="pic-tit">2</span>
+								<span class="pic-tit">1</span>
 							</a>
 						</div>
 					</li>
@@ -94,7 +95,7 @@
 						<div class="inner">
 							<a href="#">
 								<img src="http://temp.im/300x390/fff" data-src="http://temp.im/300x390/333"/>
-								<span class="pic-tit">3</span>
+								<span class="pic-tit">2</span>
 							</a>
 						</div>
 					</li>
@@ -102,7 +103,7 @@
 						<div class="inner">
 							<a href="#">
 								<img src="http://temp.im/300x390/fff" data-src="http://temp.im/300x390/444"/>
-								<span class="pic-tit">4</span>
+								<span class="pic-tit">3</span>
 							</a>
 						</div>
 					</li>
@@ -110,7 +111,7 @@
 						<div class="inner">
 							<a href="#">
 								<img src="http://temp.im/300x390/fff" data-src="http://temp.im/300x390/555"/>
-								<span class="pic-tit">5</span>
+								<span class="pic-tit">4</span>
 							</a>
 						</div>
 					</li>
@@ -118,7 +119,7 @@
 						<div class="inner">
 							<a href="#">
 								<img src="http://temp.im/300x390/fff" data-src="http://temp.im/300x390/555"/>
-								<span class="pic-tit">6</span>
+								<span class="pic-tit">5</span>
 							</a>
 						</div>
 					</li>
@@ -126,7 +127,7 @@
 						<div class="inner">
 							<a href="#">
 								<img src="http://temp.im/300x390/fff" data-src="http://temp.im/300x390/555"/>
-								<span class="pic-tit">7</span>
+								<span class="pic-tit">6</span>
 							</a>
 						</div>
 					</li>
@@ -134,7 +135,7 @@
 				<i class="arrow prev" id="Jprev2"></i>
 				<i class="arrow next" id="Jnext2"></i>
 			</div>
-		</div>
+		</div> -->
 		<script src="https://cdn.bootcss.com/jquery/1.10.2/jquery.js"></script>
 		<script type="text/javascript" src="./script/jq.picroller.js"></script>
 		<script>
@@ -146,18 +147,21 @@
 				midClass:"active",	//中间li的样式名
 				moveSpeed:300,	//动画时间
 				autoPlay:false,	//自动播放
-				stay:3000	//autoPlay为true时使用才有效果
+				stay:3000,	//autoPlay为true时使用才有效果
+				dots:true,
 			});
-			var demo2 = new PicRoller({
-				showArea:"#JslideWrap2",	//必须参数
-				prev:"#Jprev2",	//必须参数
-				next:"#Jnext2",	//必须参数
-				column:5,	//展示列数
-				midClass:"active",	//中间li的样式名
-				moveSpeed:300,	//动画时间
-				autoPlay:true,	//自动播放
-				stay:3000	//图片停留时间 , autoPlay为true时使用才有效果
-			});
+
+			// var demo2 = new PicRoller({
+			// 	showArea:"#JslideWrap2",	//必须参数
+			// 	prev:"#Jprev2",	//必须参数
+			// 	next:"#Jnext2",	//必须参数
+			// 	column:5,	//展示列数
+			// 	midClass:"active",	//中间li的样式名
+			// 	moveSpeed:300,	//动画时间
+			// 	autoPlay:true,	//自动播放
+			// 	stay:3000,	//图片停留时间 , autoPlay为true时使用才有效果
+			// 	dots:true,
+			// });
 		</script>
 	</body>
 </html>
