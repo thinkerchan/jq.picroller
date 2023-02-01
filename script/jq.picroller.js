@@ -82,11 +82,11 @@
         // this.$dots.find('.dots-item').eq(0+this.visualTargetIndex).addClass('active')
         this.$dots.find('.dots-item').eq(0).addClass('active')
 
-        this.$dots.on('click','.dots-item',(e)=>{
+        this.dotsClick && this.$dots.on('click','.dots-item',(e)=>{
 
           let targetIndex = e.target.dataset.index
           let distance =  targetIndex - this.curIndex
-          console.log(distance);
+          // console.log('distance:',distance);
           switch (distance) {
             case 0:
               break;
@@ -106,7 +106,7 @@
       }
     },
     _sort(targetIndex,distance){
-      console.log('distance:',distance);
+      // console.log('distance:',distance);
 
       if (distance>0) {
         let arrCut = this.itemArr.splice(0,Math.abs(distance))
@@ -140,8 +140,8 @@
       }
 
       this.curIndex = this.itemArr[0].index
-
       this.$dots.find('.dots-item').eq(targetIndex).addClass('active').siblings().removeClass('active')
+      this.callBack && this.callBack(this.curIndex)
     },
     arrows:function() {
       this._prev();
@@ -210,13 +210,14 @@
       }
 
       this.curIndex = itemArr[0].index
-      console.log(this.curIndex);
+      // console.log(this.curIndex);
 
       if (this.dots) {
         // this.$dots.find('.dots-item').eq((itemArr[column - 1].index) - this.visualTargetIndex).addClass('active').siblings().removeClass('active')
         this.$dots.find('.dots-item').eq((itemArr[0].index) ).addClass('active').siblings().removeClass('active')
       }
       itemArr[center].addClass(this.midClass).siblings().removeClass(this.midClass);
+      this.callBack && this.callBack(this.curIndex)
     },
     lazyLoad:function(index) {
       var itemArr = this.itemArr,
